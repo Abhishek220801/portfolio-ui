@@ -1,0 +1,29 @@
+ABHISHEK SANKHWAR
+Remote Full Stack Developer | Bengaluru, India
+
+CONTACT
++91 6283664507 | abhi.sankhwar22@gmail.com
+linkedin.com/in/abhishek-sankhwar | github.com/Abhishek220801
+
+PROFILE
+Full stack developer with 2.5+ years of experience building reliable, AI-enabled products and real-time systems. Currently working remotely with Techsunset, a Bengaluru-based software company, since April 2024.
+
+EXPERIENCE
+Techsunset — Remote Full Stack Developer
+April 2024 — Present | Bengaluru, India
+- Build and ship production-ready full-stack products across frontend, backend, and cloud infrastructure.
+- Design scalable APIs and event-driven workflows with React, Next.js, Node.js, PostgreSQL, Prisma, and AWS.
+- Collaborate with product and engineering teams to deliver clean, measurable user experiences.
+
+SELECTED WORK
+AI Teacher — LLM-powered learning platform
+Automated Video Transcoding Pipeline — AWS serverless media workflow
+Besties — Real-time communication platform
+
+SKILLS
+Gen AI, JavaScript, TypeScript, React, Tailwind CSS, Next.js, Node.js, Express, CI/CD, MongoDB, PostgreSQL, Prisma, Docker, AWS, Redis, Kafka, RabbitMQ, BullMQ.
+
+EDUCATION
+B.Tech
+Giani Zail Singh Campus College of Engineering & Technology
+GPA: 7.45 | 2019 — 2023
