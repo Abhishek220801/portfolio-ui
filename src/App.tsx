@@ -1,5 +1,6 @@
 import { type FormEvent, useEffect, useState } from "react"
 import {
+  ArrowUp,
   ArrowUpRight,
   Check,
   ChevronDown,
@@ -19,6 +20,7 @@ import {
   Zap,
 } from "lucide-react"
 import axios from "axios"
+import { Github } from "@react-symbols/icons"
 
 const whatsappUrl =
   "https://wa.me/+916283664507?text=Hi%20Abhishek%2C%20I%27d%20love%20to%20discuss%20a%20role%20with%20you."
@@ -47,11 +49,12 @@ const heroSkills = [
 
 const allSkills = [
   "Gen AI",
-  "JavaScript",
+  "TypeScript",
   "React",
-  "Tailwind",
-  "Next.js",
   "Node.js",
+  "JavaScript",
+  "Next.js",
+  "Tailwind",
   "Express",
   "CI/CD",
   "MongoDB",
@@ -62,36 +65,250 @@ const allSkills = [
   "Redis",
   "Kafka",
   "RabbitMQ",
-  "BullMQ",
+  "BullMQ"
 ]
 
 const projects = [
   {
     number: "01",
-    type: "AI / FULL STACK",
-    title: "AI Teacher",
+    type: "BUSINESS CRM",
+    title: "crm.techsunset.com",
+    url: "https://crm.techsunset.com",
+    image: "/images/projects/crm.png",
     description:
-      "An LLM-powered learning platform that turns complex topics into structured, personalized learning paths.",
-    tags: ["MERN", "LLMs", "Streaming"],
-    accent: "lime",
+      "Customer relationship management software for customers, leads, sales workflows, search, dashboards, and customer interactions.",
+    tags: ["React", "Next.js", "Node.js", "Express", "MongoDB"],
+    frontendWork: [
+      "Customer list and customer details",
+      "Customer add and edit forms",
+      "Lead management screens",
+      "Search and filtering",
+      "Dashboard and basic data display",
+      "API integration with the backend",
+      "Form validation and error handling",
+    ],
+    backendWork: [
+      "CRUD APIs for customer data",
+      "Lead management",
+      "Searching customers and leads",
+      "Updating customer status",
+      "User authentication and authorization",
+      "Request validation and error handling",
+      "Connecting APIs with MongoDB",
+    ],
   },
   {
     number: "02",
-    type: "CLOUD INFRASTRUCTURE",
-    title: "MediaFlow",
+    type: "ACCOUNTING & INVOICING",
+    title: "books.techsunset.com",
+    url: "https://books.techsunset.com",
+    image: "/images/projects/books.png",
     description:
-      "A resilient serverless video pipeline built for fast, observable multi-bitrate HLS processing.",
-    tags: ["AWS", "Lambda", "EventBridge"],
-    accent: "cyan",
+      "Accounting and invoicing software covering invoices, payments, expenses, customers, vendors, GST, and financial reporting.",
+    tags: ["React", "Next.js", "Node.js", "Express", "MongoDB"],
+    frontendWork: [
+      "Dashboard and financial summary",
+      "Invoice list and invoice creation forms",
+      "Customer and vendor management",
+      "Expense tracking screens",
+      "Payment tracking",
+      "GST summary and reports",
+      "API integration, form validation and error handling",
+    ],
+    backendWork: [
+      "Creating, updating, deleting and getting invoices",
+      "Customer and vendor management",
+      "Expense management",
+      "Payment tracking",
+      "GST and financial report data",
+      "Request validation and error handling",
+      "Connecting APIs with MongoDB",
+    ],
   },
   {
     number: "03",
-    type: "REAL-TIME PRODUCT",
-    title: "Besties",
+    type: "HR MANAGEMENT",
+    title: "hr.techsunset.com",
+    url: "https://hr.techsunset.com",
+    image: "/images/projects/hr.png",
     description:
-      "A low-latency communication platform bringing live presence, messaging, and video into one calm interface.",
-    tags: ["WebSockets", "WebRTC", "Docker"],
-    accent: "amber",
+      "Human resource management software for employees, attendance, leaves, onboarding, departments, holidays, and HR reports.",
+    tags: ["React", "Next.js", "Node.js", "Express", "MongoDB"],
+    frontendWork: [
+      "Employee list and employee details",
+      "Employee add and edit forms",
+      "Attendance management screens",
+      "Leave request and approval screens",
+      "Department and holiday management",
+      "Onboarding screens",
+      "HR reports and dashboard",
+      "API integration, form validation and error handling",
+    ],
+    backendWork: [
+      "Employee CRUD operations",
+      "Attendance management",
+      "Leave management",
+      "Department and holiday management",
+      "Employee onboarding",
+      "HR reports and data",
+      "Authentication, validation and error handling",
+      "Connecting APIs with MongoDB",
+    ],
+  },
+  {
+    number: "04",
+    type: "INVENTORY MANAGEMENT",
+    title: "inventory.techsunset.com",
+    url: "https://inventory.techsunset.com",
+    image: "/images/projects/inventory.png",
+    description:
+      "Inventory management software for products, stock, orders, suppliers, warehouses, fulfillment, and stock reporting.",
+    tags: ["React", "Next.js", "Node.js", "Express", "MongoDB"],
+    frontendWork: [
+      "Product list and product details",
+      "Add and edit product forms",
+      "Inventory and stock management",
+      "Order management screens",
+      "Supplier management",
+      "Warehouse management",
+      "Fulfillment and stock reports",
+      "API integration, search and filtering",
+    ],
+    backendWork: [
+      "Product CRUD operations",
+      "Stock and inventory management",
+      "Sales order management",
+      "Supplier and purchase order management",
+      "Warehouse management",
+      "Stock reservation and stock updates",
+      "Request validation and error handling",
+      "Connecting APIs with MongoDB",
+    ],
+  },
+  {
+    number: "05",
+    type: "PROJECT MANAGEMENT",
+    title: "project.techsunset.com",
+    url: "https://project.techsunset.com",
+    image: "/images/projects/project.png",
+    description:
+      "Project and task management software covering Kanban workflows, deadlines, milestones, workload, progress, and reporting.",
+    tags: ["React", "Next.js", "Node.js", "Express", "MongoDB"],
+    frontendWork: [
+      "Project list and project details",
+      "Task creation and task management",
+      "Kanban board",
+      "Task status and priority",
+      "Calendar and deadlines",
+      "Milestone and project progress",
+      "Team workload and reports",
+      "API integration and form validation",
+    ],
+    backendWork: [
+      "Project CRUD operations",
+      "Task and subtask management",
+      "Assigning tasks to team members",
+      "Task status and priority management",
+      "Milestone and deadline management",
+      "Team workload and time tracking",
+      "Request validation and error handling",
+      "Connecting APIs with MongoDB",
+    ],
+  },
+  {
+    number: "06",
+    type: "SCHOOL MANAGEMENT",
+    title: "tscampus.com",
+    url: "https://tscampus.com",
+    image: "/images/projects/tscampus.png",
+    description:
+      "School management system for admissions, students, attendance, fees, exams, staff, communication, dashboards, and reports.",
+    tags: ["React", "Next.js", "Node.js", "Express", "MongoDB"],
+    frontendWork: [
+      "Student list and student details",
+      "Admission and student forms",
+      "Attendance management",
+      "Fee management and payment screens",
+      "Class, section and subject management",
+      "Exam and report card screens",
+      "Staff and HR management",
+      "Dashboard, reports and notifications",
+      "API integration, form validation and error handling",
+    ],
+    backendWork: [
+      "Student and admission management",
+      "Attendance management",
+      "Fee and payment management",
+      "Class, section and subject management",
+      "Exam and result management",
+      "Staff and employee management",
+      "Notifications and communication",
+      "Authentication, validation and error handling",
+      "Connecting APIs with MongoDB",
+    ],
+  },
+]
+
+const blogPosts = [
+  {
+    number: "01",
+    category: "BACKEND",
+    title: "Message Brokers vs Message Queues",
+    readTime: "4 min read",
+    excerpt:
+      "A practical breakdown of queues, brokers, producers, consumers, delivery guarantees, and where Kafka, RabbitMQ, and BullMQ fit.",
+    content:
+      "A message queue is primarily about buffering work between producers and consumers. A message broker is a broader messaging system that can route, transform, persist, and deliver messages between multiple participants. The useful engineering question is not which term sounds better, but which delivery, ordering, retry, and scaling guarantees your workload actually needs.",
+  },
+  {
+    number: "02",
+    category: "DISTRIBUTED SYSTEMS",
+    title: "How Redis Pub/Sub Fits Into a Scaled Backend",
+    readTime: "5 min read",
+    excerpt:
+      "What changes when one Node.js server becomes multiple instances — and why in-memory events stop being enough.",
+    content:
+      "With multiple backend instances, an event emitted inside one process is invisible to the others. Redis Pub/Sub gives those instances a shared event channel. It works well for transient real-time notifications, but it is not a durable event log, so systems that require replay or guaranteed processing need a different pattern.",
+  },
+  {
+    number: "03",
+    category: "AWS",
+    title: "EC2 vs Serverless: Choosing the Runtime",
+    readTime: "4 min read",
+    excerpt:
+      "A deployment-focused comparison of EC2 and serverless workloads, including control, scaling, operations, and cost considerations.",
+    content:
+      "EC2 gives you control over the operating environment, networking, processes, and long-running workloads. Serverless reduces infrastructure management and can scale execution around requests or events. The decision should follow workload characteristics, operational requirements, startup behaviour, and the amount of infrastructure you actually want to own.",
+  },
+  {
+    number: "04",
+    category: "NODE.JS",
+    title: "What Actually Happens When Node.js Handles a Timer?",
+    readTime: "5 min read",
+    excerpt:
+      "Timers, the event loop, libuv, and why setTimeout(0) does not mean 'run immediately'.",
+    content:
+      "Node.js timers register callbacks that become eligible after their delay rather than interrupting currently executing JavaScript. The event loop and libuv coordinate when callbacks can be processed. A zero-millisecond timeout therefore means 'as soon as the runtime can process it after the relevant phases and work', not 'right now'.",
+  },
+  {
+    number: "05",
+    category: "DATABASES",
+    title: "MongoDB Indexes: The Performance Trade-Off",
+    readTime: "4 min read",
+    excerpt:
+      "Why indexes speed up reads, when compound indexes matter, and what you pay for every index you add.",
+    content:
+      "An index gives the database an additional structure for locating documents without scanning the entire collection. That can dramatically reduce read work, but indexes consume storage and add write and maintenance overhead. Good indexing starts from real query patterns rather than adding indexes to every field.",
+  },
+  {
+    number: "06",
+    category: "ARCHITECTURE",
+    title: "Designing APIs That Survive Growth",
+    readTime: "6 min read",
+    excerpt:
+      "A practical checklist for validation, pagination, authentication, error handling, idempotency, and observability.",
+    content:
+      "A production API needs more than routes that return JSON. Request validation, consistent errors, authentication and authorization, pagination, rate controls, idempotency where required, logging, and useful metrics make the contract resilient as traffic and feature count grow. The goal is predictable behaviour under both normal and failure conditions.",
   },
 ]
 
@@ -207,7 +424,7 @@ function App() {
           className={menuOpen ? "nav-links is-open" : "nav-links"}
           aria-label="Primary navigation"
         >
-          {["Home", "Works", "Resume", "Contact"].map((item) => (
+          {["Home", "Works", "Blog", "Resume", "Contact"].map((item) => (
             <button key={item} onClick={() => scrollTo(item.toLowerCase())}>
               {item}
             </button>
@@ -386,13 +603,27 @@ function App() {
 
           <div className="project-list">
             {projects.map((project) => (
-              <article
-                className={`project-card ${project.accent}`}
-                key={project.number}
-              >
+              <article className="project-card" key={project.number}>
                 <div className="project-top">
                   <span>{project.number}</span>
                   <span>{project.type}</span>
+                </div>
+
+                <div className="project-media">
+                  <img
+                    src={project.image}
+                    alt={`${project.title} project preview`}
+                    loading="lazy"
+                  />
+                  <a
+                    className="project-preview-link"
+                    href={project.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open ${project.title}`}
+                  >
+                    Open project <ArrowUpRight size={15} />
+                  </a>
                 </div>
 
                 <div className="project-body">
@@ -406,11 +637,43 @@ function App() {
                         <span key={tag}>{tag}</span>
                       ))}
                     </div>
+
+                    <details className="project-work">
+                      <summary>
+                        What I worked on <ChevronDown size={14} />
+                      </summary>
+
+                      <div className="project-work-grid">
+                        <div>
+                          <span>Frontend</span>
+                          <ul>
+                            {project.frontendWork.map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <div>
+                          <span>Backend</span>
+                          <ul>
+                            {project.backendWork.map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </details>
                   </div>
 
-                  <div className="project-arrow">
+                  <a
+                    className="project-arrow"
+                    href={project.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open ${project.title}`}
+                  >
                     <ArrowUpRight size={25} />
-                  </div>
+                  </a>
                 </div>
 
                 <div className="project-line" />
@@ -419,9 +682,56 @@ function App() {
           </div>
         </section>
 
+        <section className="blog section-pad" id="blog">
+          <div className="section-heading">
+            <div>
+              <span className="section-index">02 / RECENT WRITING</span>
+
+              <h2>
+                Short reads.
+                <br />
+                <em>Useful ideas.</em>
+              </h2>
+            </div>
+
+            <p>
+              Practical notes on full-stack engineering, distributed systems,
+              AWS, Node.js, databases, and the lessons behind shipping software.
+            </p>
+          </div>
+
+          <div className="blog-grid">
+            {blogPosts.map((post) => (
+              <article className="blog-card" key={post.number}>
+                <div className="blog-card-top">
+                  <span>{post.number}</span>
+                  <span>{post.category}</span>
+                </div>
+
+                <h3>{post.title}</h3>
+                <p>{post.excerpt}</p>
+
+                <details>
+                  <summary>
+                    Read short <ArrowUpRight size={15} />
+                  </summary>
+                  <div className="blog-content">
+                    <p>{post.content}</p>
+                  </div>
+                </details>
+
+                <div className="blog-meta">
+                  <span>{post.readTime}</span>
+                  <span>Abhishek Sankhwar</span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="about section-pad" id="resume">
           <div className="about-intro">
-            <span className="section-index">02 / THE SHORT VERSION</span>
+            <span className="section-index">03 / THE SHORT VERSION</span>
 
             <h2>
               Technical depth.
@@ -487,7 +797,7 @@ function App() {
         <section className="capabilities section-pad">
           <div className="section-heading compact">
             <div>
-              <span className="section-index">03 / WHAT I BRING</span>
+              <span className="section-index">04 / WHAT I BRING</span>
 
               <h2>
                 A useful mix of
@@ -517,7 +827,7 @@ function App() {
 
         <section className="toolkit section-pad">
           <div className="toolkit-heading">
-            <span className="section-index">04 / THE TOOLKIT</span>
+            <span className="section-index">05 / THE TOOLKIT</span>
 
             <h2>
               Sharp tools.
@@ -543,7 +853,7 @@ function App() {
         <section className="contact section-pad" id="contact">
           <div className="contact-inner">
             <div className="contact-copy">
-              <span className="section-index">05 / START A CONVERSATION</span>
+              <span className="section-index">06 / START A CONVERSATION</span>
 
               <h2>
                 Have a good
@@ -657,26 +967,16 @@ function App() {
         <p>Designed &amp; built with intention.</p>
 
         <div className="footer-links">
-          {/* <a
+          <a
             href="https://github.com/Abhishek220801"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
           >
-            <Github size={18} />
+            <Github height={18} width={18} />
           </a>
-
-          <a
-            href="https://linkedin.com/in/abhishek-sankhwar"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={18} />
-          </a> */}
-
           <button onClick={() => scrollTo("home")} aria-label="Back to top">
-            <ArrowUpRight size={18} />
+            <ArrowUp size={18} />
           </button>
         </div>
       </footer>
