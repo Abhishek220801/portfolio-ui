@@ -612,9 +612,12 @@ function App() {
                 <div className="project-media">
                   <img
                     src={project.image}
-                    alt={`${project.title} project preview`}
+                    alt={`${project.title} full page project preview`}
                     loading="lazy"
                   />
+                  <span className="project-scroll-hint" aria-hidden="true">
+                    Hover to explore ↓
+                  </span>
                   <a
                     className="project-preview-link"
                     href={project.url}
@@ -967,14 +970,6 @@ function App() {
         <p>Designed &amp; built with intention.</p>
 
         <div className="footer-links">
-          <a
-            href="https://github.com/Abhishek220801"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="GitHub"
-          >
-            <Github height={18} width={18} />
-          </a>
           <button onClick={() => scrollTo("home")} aria-label="Back to top">
             <ArrowUp size={18} />
           </button>

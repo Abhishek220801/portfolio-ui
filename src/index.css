@@ -552,14 +552,14 @@ h2 {
 }
 .project-media {
   position: relative;
-  min-height: 300px;
+  height: 430px;
+  min-height: 430px;
   margin: 8px 0 4px;
   overflow: hidden;
   border: 1px solid #182538;
   border-radius: 12px;
-  background:
-    linear-gradient(135deg, rgba(0, 217, 255, 0.08), transparent 48%),
-    #0b1220;
+  background: #f7f8fa;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
 .project-media::after {
@@ -567,22 +567,54 @@ h2 {
   inset: 0;
   content: "";
   pointer-events: none;
-  background: linear-gradient(180deg, transparent 55%, rgba(6, 9, 18, 0.58));
+  background:
+    linear-gradient(180deg, rgba(6, 9, 18, 0.08), transparent 12%),
+    linear-gradient(0deg, rgba(6, 9, 18, 0.2), transparent 16%);
+  z-index: 1;
 }
 
 .project-media img {
   display: block;
   width: 100%;
-  height: 300px;
-  object-fit: cover;
+  height: auto;
+  min-height: 100%;
+  object-fit: contain;
   object-position: top center;
-  filter: saturate(0.86) contrast(1.03);
-  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: saturate(0.94) contrast(1.02);
+  transform: translateY(0);
+  transition: transform 0.8s linear, filter 0.4s ease;
+  will-change: transform;
 }
 
 .project-card:hover .project-media img {
-  transform: scale(1.025);
-  filter: saturate(1) contrast(1.04);
+  transform: translateY(calc(-100% + 430px));
+  transition-duration: 20s, 0.4s;
+  filter: saturate(1) contrast(1.03);
+}
+
+.project-scroll-hint {
+  position: absolute;
+  z-index: 3;
+  left: 16px;
+  bottom: 15px;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 10px;
+  color: #dce4ed;
+  border: 1px solid rgba(0, 217, 255, 0.28);
+  border-radius: 7px;
+  background: rgba(6, 9, 18, 0.78);
+  backdrop-filter: blur(10px);
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.project-card:hover .project-scroll-hint {
+  opacity: 0;
+  transform: translateY(5px);
 }
 
 .project-preview-link {
@@ -1376,10 +1408,13 @@ h2 {
     min-height: 285px;
   }
 
-  .project-media,
-  .project-media img {
-    height: 230px;
-    min-height: 230px;
+  .project-media {
+    height: 330px;
+    min-height: 330px;
+  }
+
+  .project-card:hover .project-media img {
+    transform: translateY(calc(-100% + 330px));
   }
 
   .project-work-grid {
@@ -1418,10 +1453,13 @@ h2 {
   .orbit-two {
     width: 125%;
   }
-  .project-media,
-  .project-media img {
-    height: 190px;
-    min-height: 190px;
+  .project-media {
+    height: 260px;
+    min-height: 260px;
+  }
+
+  .project-card:hover .project-media img {
+    transform: translateY(calc(-100% + 260px));
   }
 
   .project-body p {
