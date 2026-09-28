@@ -21,7 +21,7 @@ import {
 import axios from "axios"
 
 const whatsappUrl =
-  "https://wa.me/916283664507?text=Hi%20Abhishek%2C%20I%27d%20love%20to%20discuss%20a%20role%20with%20you."
+  "https://wa.me/+916283664507?text=Hi%20Abhishek%2C%20I%27d%20love%20to%20discuss%20a%20role%20with%20you."
 
 const resumePath = "/abhishek-sankhwar-resume.txt"
 

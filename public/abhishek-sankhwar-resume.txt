@@ -2,7 +2,7 @@ ABHISHEK SANKHWAR
 Remote Full Stack Developer | Bengaluru, India
 
 CONTACT
-+91 6283664507 | abhi.sankhwar22@gmail.com
++91 6283664507 | abhishektechsunset@gmail.com
 linkedin.com/in/abhishek-sankhwar | github.com/Abhishek220801
 
 PROFILE
@@ -18,7 +18,7 @@ April 2024 — Present | Bengaluru, India
 SELECTED WORK
 AI Teacher — LLM-powered learning platform
 Automated Video Transcoding Pipeline — AWS serverless media workflow
-Besties — Real-time communication platform
+Besties — Real-time communication and social media platform
 
 SKILLS
 Gen AI, JavaScript, TypeScript, React, Tailwind CSS, Next.js, Node.js, Express, CI/CD, MongoDB, PostgreSQL, Prisma, Docker, AWS, Redis, Kafka, RabbitMQ, BullMQ.
