@@ -751,8 +751,9 @@ function App() {
             </button>
           </div>
 
-          <div className="experience-card">
-            <div className="experience-header">
+          <div className="about-history">
+            <div className="experience-card">
+              <div className="experience-header">
               <span>EXPERIENCE</span>
               <span>2024 — NOW</span>
             </div>
@@ -790,9 +791,31 @@ function App() {
               </span>
             </div>
 
-            <a className="text-link" href={resumePath} download>
-              View full resume <Download size={16} />
-            </a>
+              <a className="text-link" href={resumePath} download>
+                View full resume <Download size={16} />
+              </a>
+            </div>
+
+            <div className="education-card">
+            <div className="experience-header">
+              <span>EDUCATION</span>
+              <span>2019 — 2023</span>
+            </div>
+
+            <div className="experience-role education-role">
+              <div className="company-logo education-logo">GZ</div>
+
+              <div>
+                <h3>B.Tech</h3>
+                <p>Giani Zail Singh Campus College, Bathinda, Punjab</p>
+              </div>
+
+                <span className="gpa-badge">
+                  <span>7.45</span>
+                  <span>GPA</span>
+                </span>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -996,7 +1019,7 @@ function App() {
         rel="noreferrer"
       >
         <MessageCircle size={18} />
-        Hire me on WhatsApp
+        Let's talk on WhatsApp
         <ArrowUpRight size={16} />
       </a>
     </div>

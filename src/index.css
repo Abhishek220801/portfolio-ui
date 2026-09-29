@@ -892,10 +892,37 @@ h2 {
 .text-link:hover {
   gap: 15px;
 }
+.about-history {
+  align-self: start;
+  min-width: 0;
+}
 .experience-card {
-  align-self: end;
   padding: 28px 0 0;
   border-top: 1px solid #1a2e3e;
+}
+.education-card {
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid #1a2e3e;
+}
+.education-role {
+  margin-bottom: 0;
+}
+.education-logo {
+  font-size: 10px;
+  letter-spacing: -0.04em;
+}
+.gpa-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: auto;
+  padding: 6px 10px;
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  color: #6ad0e0;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  border-radius: 100px;
 }
 .experience-header {
   color: #5a6a7e;
@@ -1343,7 +1370,7 @@ h2 {
     grid-template-columns: 1fr;
     gap: 58px;
   }
-  .experience-card {
+  .about-history {
     margin-top: 10px;
   }
   .service-grid {
@@ -1369,6 +1396,7 @@ h2 {
     display: none;
   }
   .whatsapp-fab {
+    display: none;
     width: 48px;
     height: 48px;
     justify-content: center;
@@ -1468,10 +1496,14 @@ h2 {
   .experience-role {
     align-items: start;
   }
-  .current-badge {
+  .current-badge,
+  .gpa-badge {
     margin-left: 0;
   }
+  .education-card {
+    margin-top: 42px;
+  }
   .footer-links {
-    margin-left: 0;
+    margin-right: 0;
   }
 }
