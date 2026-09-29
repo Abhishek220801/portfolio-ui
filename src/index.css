@@ -1507,3 +1507,8 @@ h2 {
     margin-right: 0;
   }
 }
+
+/* Web3Forms honeypot — keeps the spam field invisible without affecting the form layout. */
+.contact-form .hidden {
+  display: none !important;
+}

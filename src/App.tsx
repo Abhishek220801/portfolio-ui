@@ -1,4 +1,4 @@
-import { type FormEvent, useEffect, useState } from "react"
+import { type FormEvent, type SubmitEvent, useEffect, useState } from "react"
 import {
   ArrowUp,
   ArrowUpRight,
@@ -6,21 +6,17 @@ import {
   ChevronDown,
   Code2,
   Download,
-  // Github,
-  // Linkedin,
   Mail,
   MapPin,
   Menu,
   MessageCircle,
   MoveUpRight,
-  Send,
   Sparkles,
+  Send,
   Workflow,
   X,
   Zap,
 } from "lucide-react"
-import axios from "axios"
-
 const whatsappUrl =
   "https://wa.me/+916283664507?text=Hi%20Abhishek%2C%20I%27d%20love%20to%20discuss%20a%20role%20with%20you."
 
@@ -342,7 +338,7 @@ function App() {
     "idle" | "sending" | "success" | "error"
   >("idle")
 
-  const SERVER = import.meta.env.VITE_SERVER
+  const FORM_KEY = import.meta.env.VITE_FORM_KEY
 
   useEffect(() => {
     if (sessionStorage.getItem("resume-downloaded")) return
@@ -370,39 +366,38 @@ function App() {
     setMenuOpen(false)
   }
 
-  // Contact form submission
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-  event.preventDefault()
+  const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
+    event.preventDefault()
 
-  setFormStatus("sending")
+    setFormStatus("sending")
 
-  try {
-    const response = await axios.post(
-      `${SERVER}/api/contact`,
-      formState,
-      {
+    const form = event.currentTarget
+    const formData = new FormData(form)
+    formData.set("access_key", FORM_KEY)
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
         headers: {
-          "Content-Type": "application/json",
+          Accept: "application/json",
         },
+      })
+
+      const result = await response.json()
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Failed to send message")
       }
-    )
 
-    if (response.status !== 200) {
-      throw new Error("Failed to send message")
+      form.reset()
+      setFormState({ name: "", email: "", message: "" })
+      setFormStatus("success")
+    } catch (error) {
+      console.error("Contact form error:", error)
+      setFormStatus("error")
     }
-
-    setFormState({
-      name: "",
-      email: "",
-      message: "",
-    })
-
-    setFormStatus("success")
-  } catch (error) {
-    console.error("Contact form error:", error)
-    setFormStatus("error")
   }
-}
 
   return (
     <div className="site-shell">
@@ -906,17 +901,19 @@ function App() {
             </div>
 
             <form className="contact-form" onSubmit={handleSubmit}>
+              <input type="hidden" name="access_key" value={FORM_KEY} />
+              <input type="hidden" name="subject" value="New portfolio enquiry" />
+              <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" />
+
               <label>
                 Name
                 <input
                   required
                   minLength={2}
+                  name="name"
                   value={formState.name}
                   onChange={(event) =>
-                    setFormState({
-                      ...formState,
-                      name: event.target.value,
-                    })
+                    setFormState({ ...formState, name: event.target.value })
                   }
                   placeholder="Your name"
                 />
@@ -927,12 +924,10 @@ function App() {
                 <input
                   required
                   type="email"
+                  name="email"
                   value={formState.email}
                   onChange={(event) =>
-                    setFormState({
-                      ...formState,
-                      email: event.target.value,
-                    })
+                    setFormState({ ...formState, email: event.target.value })
                   }
                   placeholder="you@company.com"
                 />
@@ -943,12 +938,10 @@ function App() {
                 <textarea
                   required
                   minLength={10}
+                  name="message"
                   value={formState.message}
                   onChange={(event) =>
-                    setFormState({
-                      ...formState,
-                      message: event.target.value,
-                    })
+                    setFormState({ ...formState, message: event.target.value })
                   }
                   placeholder="Tell me a little about the role or project..."
                   rows={4}
@@ -960,18 +953,18 @@ function App() {
                 type="submit"
                 disabled={formStatus === "sending"}
               >
-                {formStatus === "sending" ? "Sending..." : "Send enquiry"}{" "}
+                {formStatus === "sending" ? "Sending..." : "Send enquiry"}
                 <Send size={16} />
               </button>
 
               {formStatus === "success" && (
-                <p className="form-message success">
+                <p className="form-message success" aria-live="polite">
                   <Check size={15} /> Thanks — your message is on its way.
                 </p>
               )}
 
               {formStatus === "error" && (
-                <p className="form-message error">
+                <p className="form-message error" aria-live="polite">
                   Something went wrong. Please email me directly instead.
                 </p>
               )}
