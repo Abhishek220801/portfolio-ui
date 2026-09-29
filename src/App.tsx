@@ -1,4 +1,4 @@
-import { type FormEvent, type SubmitEvent, useEffect, useState } from "react"
+import { type SubmitEvent, useEffect, useState } from "react"
 import {
   ArrowUp,
   ArrowUpRight,
